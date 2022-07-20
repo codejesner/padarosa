@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibPadarosa.Banco
+namespace Padarosa.Banco
 {
-    internal class ProdutoDAO
+    internal class OrdemDAO
     {
     }
 }

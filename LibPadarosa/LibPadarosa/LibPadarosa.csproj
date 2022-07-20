@@ -64,11 +64,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Banco\CategoriaDAO.cs" />
-    <Compile Include="Banco\ConexaoBD.cs" />
-    <Compile Include="Banco\OrdemDAO.cs" />
-    <Compile Include="Banco\ProdutoDAO.cs" />
-    <Compile Include="Banco\UsuarioDAO.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="Ordem.cs" />
     <Compile Include="Produto.cs" />
