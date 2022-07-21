@@ -21,7 +21,11 @@ namespace Padarosa.Formularios
             InitializeComponent();
             _u = u;
             lblMensagem.Text = $"Bem-vindo {_u.NomeCompleto}! Escolha uma opção abaixo:";
-
+            // Ocultar o botão USUARIO de todos, exceto do admin
+            if (u.Id != 1)
+            {
+                btnUsuarios.Visible = false;
+            }
         }
 
         private void btnComandas_Click(object sender, EventArgs e)

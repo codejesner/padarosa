@@ -34,25 +34,83 @@ namespace Padarosa.Banco
         public static bool Cadastrar(Usuario u)
         {
             string comando = "INSERT INTO usuarios(nome_completo, email, senha) VALUES (@nome, @email, @senha)";
-            
+
             ConexaoBD conexaoBD = new ConexaoBD();
             MySqlConnection con = conexaoBD.ObterConexao();
             MySqlCommand cmd = new MySqlCommand(comando, con);
 
             cmd.Parameters.AddWithValue("@nome", u.NomeCompleto);
             cmd.Parameters.AddWithValue("@email", u.Email);
-            cmd.Parameters.AddWithValue("@senha", u.Senha);
+            cmd.Parameters.AddWithValue("@senha", EasyEncryption.SHA.ComputeSHA256Hash(u.Senha));
 
             cmd.Prepare();
-            if (cmd.ExecuteNonQuery() == 0)
+            try
             {
-                conexaoBD.Desconectar(con);
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    conexaoBD.Desconectar(con);
+                    return false;
+                }
+                else
+                {
+                    conexaoBD.Desconectar(con);
+                    return true;
+                }
+
+            }
+            catch
+            {
                 return false;
             }
-            else
+        }
+        // Listar Tudo
+        public static DataTable ListarTudo()
+        {
+            DataTable tabela = new DataTable();
+            string comando;
+            comando = "SELECT id as 'ID', nome_completo as 'Nome Completo', email as 'Email'FROM usuarios";
+            ConexaoBD conexaoBD = new ConexaoBD();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Prepare();
+            tabela.Load(cmd.ExecuteReader());
+            conexaoBD.Desconectar(con);
+            return tabela;
+        }
+
+        // Modificar
+        public static bool Modificar(Usuario u)
+        {
+            string comando = "UPDATE usuarios SET nome_completo = @nome, email = @email, senha = @senha WHERE id = @id";
+
+            ConexaoBD conexaoBD = new ConexaoBD();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@nome", u.NomeCompleto);
+            cmd.Parameters.AddWithValue("@email", u.Email);
+            cmd.Parameters.AddWithValue("@senha", EasyEncryption.SHA.ComputeSHA256Hash(u.Senha));
+            cmd.Parameters.AddWithValue("@id", u.Id);
+
+            cmd.Prepare();
+            try
             {
-                conexaoBD.Desconectar(con);
-                return true;
+                if (cmd.ExecuteNonQuery() == 0)
+                {
+                    conexaoBD.Desconectar(con);
+                    return false;
+                }
+                else
+                {
+                    conexaoBD.Desconectar(con);
+                    return true;
+                }
+
+            }
+            catch
+            {
+                return false;
             }
         }
 
