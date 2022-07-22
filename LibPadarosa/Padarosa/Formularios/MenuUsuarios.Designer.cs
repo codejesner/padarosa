@@ -145,6 +145,7 @@
             this.grbAtualizar.Controls.Add(this.lblSenhaAtt);
             this.grbAtualizar.Controls.Add(this.lblEmailAtt);
             this.grbAtualizar.Controls.Add(this.lblNomeAtt);
+            this.grbAtualizar.Enabled = false;
             this.grbAtualizar.Location = new System.Drawing.Point(12, 206);
             this.grbAtualizar.Name = "grbAtualizar";
             this.grbAtualizar.Size = new System.Drawing.Size(380, 152);

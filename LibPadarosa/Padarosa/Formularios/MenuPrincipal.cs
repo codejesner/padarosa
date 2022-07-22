@@ -38,5 +38,11 @@ namespace Padarosa.Formularios
             var MenuUsuarios = new MenuUsuarios(_u);
             MenuUsuarios.ShowDialog();
         }
+
+        private void btnProdutos_Click(object sender, EventArgs e)
+        {
+            var MenuProdutos = new MenuProdutos(_u);
+            MenuProdutos.ShowDialog();
+        }
     }
 }

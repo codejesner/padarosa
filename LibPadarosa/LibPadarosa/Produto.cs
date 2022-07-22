@@ -9,7 +9,7 @@ namespace LibPadarosa
     public class Produto
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string Nome { get; set; }
         public double Preco { get; set; }
         public int IdCategoria { get; set; }
         public int IdRespCadastro { get; set; }

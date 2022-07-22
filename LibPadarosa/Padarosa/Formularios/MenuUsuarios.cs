@@ -32,7 +32,6 @@ namespace Padarosa.Formularios
         {
 
         }
-
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             var u = new Usuario();
@@ -62,12 +61,10 @@ namespace Padarosa.Formularios
             {
                 MessageBox.Show("Verifique as informações digitadas.");
             }
-
-
         }
-
         private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            grbAtualizar.Enabled = true;
             // Descobrir o numero da linha da célula clicada.
             int numeroLinha = dgvUsuarios.CurrentCell.RowIndex;
             // Guardar toda a linha e um objeto DataRow
@@ -76,8 +73,9 @@ namespace Padarosa.Formularios
             _idSelecionado = int.Parse(linha.Cells[0].Value.ToString());
             txtNomeAtt.Text = linha.Cells[1].Value.ToString();
             txtEmailAtt.Text = linha.Cells[2].Value.ToString();
-        }
 
+
+        }
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             var u = new Usuario();
@@ -87,13 +85,19 @@ namespace Padarosa.Formularios
             u.Id = _idSelecionado;
 
             // Chamar o Modificar
-            Banco.UsuarioDAO.Modificar(u);
-            MessageBox.Show("Usuario modificado com sucesso");
-            // Limpar os campos
-            txtNomeAtt.Clear();
-            txtEmailAtt.Clear();
-            txtSenhaAtt.Clear();
-            AtualizarDGV();
+            if(Banco.UsuarioDAO.Modificar(u)) { 
+                MessageBox.Show("Usuario modificado com sucesso");
+                // Limpar os campos
+                txtNomeAtt.Clear();
+                txtEmailAtt.Clear();
+                txtSenhaAtt.Clear();
+                AtualizarDGV();
+                grbAtualizar.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Verifique as informações.");
+            }
         }
     }
 }

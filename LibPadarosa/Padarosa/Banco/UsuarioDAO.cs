@@ -82,7 +82,16 @@ namespace Padarosa.Banco
         // Modificar
         public static bool Modificar(Usuario u)
         {
-            string comando = "UPDATE usuarios SET nome_completo = @nome, email = @email, senha = @senha WHERE id = @id";
+            string comando;
+            if (u.Senha != "")
+            {
+                comando = "UPDATE usuarios SET nome_completo = @nome, email = @email, senha = @senha WHERE id = @id";
+
+            }
+            else
+            {
+                comando = "UPDATE usuarios SET nome_completo = @nome, email = @email WHERE id = @id";
+            }
 
             ConexaoBD conexaoBD = new ConexaoBD();
             MySqlConnection con = conexaoBD.ObterConexao();
@@ -90,8 +99,13 @@ namespace Padarosa.Banco
 
             cmd.Parameters.AddWithValue("@nome", u.NomeCompleto);
             cmd.Parameters.AddWithValue("@email", u.Email);
-            cmd.Parameters.AddWithValue("@senha", EasyEncryption.SHA.ComputeSHA256Hash(u.Senha));
             cmd.Parameters.AddWithValue("@id", u.Id);
+
+            if (u.Senha != "")
+            {
+                cmd.Parameters.AddWithValue("@senha", EasyEncryption.SHA.ComputeSHA256Hash(u.Senha));
+            }
+
 
             cmd.Prepare();
             try

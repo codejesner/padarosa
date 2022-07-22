@@ -89,6 +89,12 @@
     <Compile Include="Formularios\MenuPrincipal.Designer.cs">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\MenuProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MenuProdutos.Designer.cs">
+      <DependentUpon>MenuProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\MenuUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MenuProdutos.resx">
+      <DependentUpon>MenuProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuUsuarios.resx">
       <DependentUpon>MenuUsuarios.cs</DependentUpon>

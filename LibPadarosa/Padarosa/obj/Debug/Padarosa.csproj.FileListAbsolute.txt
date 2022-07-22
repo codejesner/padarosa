@@ -30,3 +30,4 @@ C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\bin\
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\bin\Debug\EasyEncryption.dll
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuPrincipal.resources
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuUsuarios.resources
+C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuProdutos.resources
