@@ -19,8 +19,7 @@ namespace Padarosa.Formularios
 
         public MenuProdutos(Usuario u)
         {
-            
-            _id = u.Id;
+            _id = 1;
             InitializeComponent();
             var data = new List<string>();
 
@@ -31,23 +30,44 @@ namespace Padarosa.Formularios
                 data.Add(nome);
 
             }
-            cmbCategoria.DataSource = data;
-            dgvProdutos.DataSource = Banco.ProdutoDAO.ListarTudo();
+            cmbCategoria.DataSource = DateTableToArray();
+            cmbProdAtt.DataSource = DateTableToArray();
+            AtualizarDgv();
         }
 
+        private void AtualizarDgv()
+        {
+            dgvProdutos.DataSource = Banco.ProdutoDAO.ListarTudo();
+        }
+        private List<string> DateTableToArray()
+        {
+            var data = new List<string>();
+
+            DataTable dt = Banco.CategoriaDAO.NomeCategorias();
+            foreach (DataRow dr in dt.Rows)
+            {
+                string nome = $"{dr["id"]} - {dr["nome"]}";
+                data.Add(nome);
+
+            }
+            return data;
+        }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             if (txtNome.Text.Length >= 3 && txtPreco.Text.Length > 0)
             {
                 _p.Nome = txtNome.Text;
                 _p.Preco = double.Parse(txtPreco.Text);
-                
+
                 _p.IdCategoria = int.Parse(cmbCategoria.Text.Split(' ')[0].ToString());
                 _p.IdRespCadastro = _id;
 
                 if (Banco.ProdutoDAO.Cadastrar(_p))
                 {
                     MessageBox.Show("Cadastrado com sucesso");
+                    txtNome.Clear();
+                    txtPreco.Clear();
+                    AtualizarDgv();
                 }
                 else
                 {
@@ -58,14 +78,39 @@ namespace Padarosa.Formularios
             {
                 MessageBox.Show("Verifique as informações.");
             }
-
-            
-
-           
-
-
-
         }
 
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            _p.Nome = txtNomeAtt.Text;
+            _p.Preco = double.Parse(txtPrecoAtt.Text);
+            _p.IdCategoria = int.Parse(cmbProdAtt.Text.Split(' ')[0].ToString());
+            _p.IdRespCadastro = _id;
+
+            // Chamar o Modificar
+            if (Banco.ProdutoDAO.Modificar(_p))
+            {
+                MessageBox.Show("Usuario modificado com sucesso");
+                txtNomeAtt.Clear();
+                txtPrecoAtt.Clear();
+                AtualizarDgv();
+            }
+            else
+            {
+                MessageBox.Show("Verifique as informações.");
+            }
+        }
+
+        private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Descobrir o numero da linha da célula clicada.
+            int numeroLinha = dgvProdutos.CurrentCell.RowIndex;
+            // Guardar toda a linha e um objeto DataRow
+            var linha = dgvProdutos.Rows[numeroLinha];
+            // Atribuindo os valores da celulas para os textbox
+            _p.Id = int.Parse(linha.Cells[0].Value.ToString());
+            txtNomeAtt.Text = linha.Cells[1].Value.ToString();
+            txtPrecoAtt.Text = linha.Cells[2].Value.ToString();
+        }
     }
 }

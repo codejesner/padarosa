@@ -15,9 +15,10 @@ namespace Padarosa
         [STAThread]
         static void Main()
         {
+            Usuario u = new Usuario();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new Formularios.MenuProdutos(u));
         }
     }
 }

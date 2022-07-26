@@ -50,6 +50,35 @@ namespace Padarosa.Banco
             conexaoBD.Desconectar(con);
             return tabela;
         }
+
+        public static bool Modificar(Produto p)
+        {
+
+            string comando;
+            comando = "UPDATE produtos SET nome = @nome, preco = @preco, id_categoria = @id_categoria, id_respcadastro = @id_respcadastro WHERE id = @id";
+
+            ConexaoBD conexaoBD = new ConexaoBD();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@nome", p.Nome);
+            cmd.Parameters.AddWithValue("@preco", p.Preco);
+            cmd.Parameters.AddWithValue("@id_categoria", p.IdCategoria);
+            cmd.Parameters.AddWithValue("@id_respcadastro", p.IdRespCadastro);
+            cmd.Parameters.AddWithValue("@id", p.Id);
+
+            cmd.Prepare();
+            if (cmd.ExecuteNonQuery() == 0)
+            {
+                conexaoBD.Desconectar(con);
+                return false;
+            }
+            else
+            {
+                conexaoBD.Desconectar(con);
+                return true;
+            }
+        }
     }
 
 }
