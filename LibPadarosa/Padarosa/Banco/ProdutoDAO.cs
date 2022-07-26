@@ -50,7 +50,6 @@ namespace Padarosa.Banco
             conexaoBD.Desconectar(con);
             return tabela;
         }
-
         public static bool Modificar(Produto p)
         {
 
@@ -79,6 +78,33 @@ namespace Padarosa.Banco
                 return true;
             }
         }
+
+        public static bool Remover(int id)
+        {
+            string comando;
+            comando = "DELETE FROM produtos WHERE id = @id";
+
+            ConexaoBD conexaoBD = new ConexaoBD();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.Prepare();
+            if (cmd.ExecuteNonQuery() == 0)
+            {
+                conexaoBD.Desconectar(con);
+                return false;
+            }
+            else
+            {
+                conexaoBD.Desconectar(con);
+                return true;
+            }
+
+
+        }
+
     }
 
 }

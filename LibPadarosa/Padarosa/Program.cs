@@ -1,4 +1,5 @@
 ﻿using LibPadarosa;
+using Padarosa.Formularios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +16,9 @@ namespace Padarosa
         [STAThread]
         static void Main()
         {
-            Usuario u = new Usuario();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Formularios.MenuProdutos(u));
+            Application.Run(new Login());
         }
     }
 }

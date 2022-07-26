@@ -45,6 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnCategorias = new System.Windows.Forms.Button();
+            this.btnExcluirProd = new System.Windows.Forms.Button();
             this.grbCadProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.grbAtt.SuspendLayout();
@@ -133,9 +135,10 @@
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.Location = new System.Drawing.Point(371, 49);
             this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.Size = new System.Drawing.Size(381, 389);
+            this.dgvProdutos.Size = new System.Drawing.Size(381, 344);
             this.dgvProdutos.TabIndex = 1;
             this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellClick);
+            this.dgvProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellContentClick);
             // 
             // grbAtt
             // 
@@ -213,15 +216,40 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Nome";
             // 
+            // btnCategorias
+            // 
+            this.btnCategorias.Location = new System.Drawing.Point(561, 400);
+            this.btnCategorias.Name = "btnCategorias";
+            this.btnCategorias.Size = new System.Drawing.Size(191, 38);
+            this.btnCategorias.TabIndex = 8;
+            this.btnCategorias.Text = "Adicionar Categoria";
+            this.btnCategorias.UseVisualStyleBackColor = true;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click);
+            // 
+            // btnExcluirProd
+            // 
+            this.btnExcluirProd.Location = new System.Drawing.Point(371, 399);
+            this.btnExcluirProd.Name = "btnExcluirProd";
+            this.btnExcluirProd.Size = new System.Drawing.Size(184, 38);
+            this.btnExcluirProd.TabIndex = 9;
+            this.btnExcluirProd.Text = "Excluir Produto";
+            this.btnExcluirProd.UseVisualStyleBackColor = true;
+            this.btnExcluirProd.Click += new System.EventHandler(this.btnExcluirProd_Click);
+            // 
             // MenuProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(764, 450);
+            this.Controls.Add(this.btnExcluirProd);
+            this.Controls.Add(this.btnCategorias);
             this.Controls.Add(this.grbAtt);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.grbCadProduto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MenuProdutos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuProdutos";
             this.grbCadProduto.ResumeLayout(false);
             this.grbCadProduto.PerformLayout();
@@ -251,5 +279,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnCategorias;
+        private System.Windows.Forms.Button btnExcluirProd;
     }
 }

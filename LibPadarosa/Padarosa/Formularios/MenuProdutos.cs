@@ -15,11 +15,12 @@ namespace Padarosa.Formularios
     {
 
         private Produto _p = new Produto();
+        private int _idSelecionado;
         private int _id;
 
         public MenuProdutos(Usuario u)
         {
-            _id = 1;
+            _id = u.Id;
             InitializeComponent();
             var data = new List<string>();
 
@@ -71,7 +72,7 @@ namespace Padarosa.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("else");
+                    MessageBox.Show("Erro ao tentar cadastrar");
                 }
             }
             else
@@ -111,6 +112,31 @@ namespace Padarosa.Formularios
             _p.Id = int.Parse(linha.Cells[0].Value.ToString());
             txtNomeAtt.Text = linha.Cells[1].Value.ToString();
             txtPrecoAtt.Text = linha.Cells[2].Value.ToString();
+            _idSelecionado = int.Parse(linha.Cells[0].Value.ToString());
+        }
+
+        private void btnCategorias_Click(object sender, EventArgs e)
+        {
+            var MenuCategorias = new MenuCategorias();
+            MenuCategorias.ShowDialog();
+        }
+
+        private void btnExcluirProd_Click(object sender, EventArgs e)
+        {
+            if (Banco.ProdutoDAO.Remover(_idSelecionado))
+            {
+                MessageBox.Show("Produto removido com sucesso!");
+                AtualizarDgv();
+            }
+            else
+            {
+                MessageBox.Show("Selecione o produto para remover");
+            }
+        }
+
+        private void dgvProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
