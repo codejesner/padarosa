@@ -32,3 +32,4 @@ C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuUsuarios.resources
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuProdutos.resources
 C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuCategorias.resources
+C:\Users\jesner.fdoliveira\Documents\padarosa\padarosa\LibPadarosa\Padarosa\obj\Debug\Padarosa.Formularios.MenuComandas.resources

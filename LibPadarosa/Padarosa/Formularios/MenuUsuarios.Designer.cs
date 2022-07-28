@@ -45,9 +45,13 @@
             this.lblSenhaAtt = new System.Windows.Forms.Label();
             this.lblEmailAtt = new System.Windows.Forms.Label();
             this.lblNomeAtt = new System.Windows.Forms.Label();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.grbExcluir = new System.Windows.Forms.GroupBox();
+            this.lblExcluir = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.grbCadastros.SuspendLayout();
             this.grbAtualizar.SuspendLayout();
+            this.grbExcluir.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvUsuarios
@@ -58,9 +62,10 @@
             this.dgvUsuarios.Location = new System.Drawing.Point(409, 12);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
-            this.dgvUsuarios.Size = new System.Drawing.Size(563, 346);
+            this.dgvUsuarios.Size = new System.Drawing.Size(563, 315);
             this.dgvUsuarios.TabIndex = 0;
             this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellContentClick);
             // 
             // grbCadastros
             // 
@@ -211,11 +216,45 @@
             this.lblNomeAtt.TabIndex = 0;
             this.lblNomeAtt.Text = "Nome Completo";
             // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.Color.Maroon;
+            this.btnExcluir.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnExcluir.Location = new System.Drawing.Point(446, 8);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(111, 31);
+            this.btnExcluir.TabIndex = 8;
+            this.btnExcluir.Text = "Excluir Usuario";
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // grbExcluir
+            // 
+            this.grbExcluir.Controls.Add(this.lblExcluir);
+            this.grbExcluir.Controls.Add(this.btnExcluir);
+            this.grbExcluir.Location = new System.Drawing.Point(409, 337);
+            this.grbExcluir.Name = "grbExcluir";
+            this.grbExcluir.Size = new System.Drawing.Size(563, 43);
+            this.grbExcluir.TabIndex = 9;
+            this.grbExcluir.TabStop = false;
+            this.grbExcluir.Text = "Apagar";
+            // 
+            // lblExcluir
+            // 
+            this.lblExcluir.AutoSize = true;
+            this.lblExcluir.Location = new System.Drawing.Point(7, 20);
+            this.lblExcluir.Name = "lblExcluir";
+            this.lblExcluir.Size = new System.Drawing.Size(0, 13);
+            this.lblExcluir.TabIndex = 9;
+            // 
             // MenuUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 392);
+            this.Controls.Add(this.grbExcluir);
             this.Controls.Add(this.grbAtualizar);
             this.Controls.Add(this.grbCadastros);
             this.Controls.Add(this.dgvUsuarios);
@@ -230,6 +269,8 @@
             this.grbCadastros.PerformLayout();
             this.grbAtualizar.ResumeLayout(false);
             this.grbAtualizar.PerformLayout();
+            this.grbExcluir.ResumeLayout(false);
+            this.grbExcluir.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -253,5 +294,8 @@
         private System.Windows.Forms.Label lblSenhaAtt;
         private System.Windows.Forms.Label lblEmailAtt;
         private System.Windows.Forms.Label lblNomeAtt;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.GroupBox grbExcluir;
+        private System.Windows.Forms.Label lblExcluir;
     }
 }

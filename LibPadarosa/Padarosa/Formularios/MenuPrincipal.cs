@@ -30,7 +30,8 @@ namespace Padarosa.Formularios
 
         private void btnComandas_Click(object sender, EventArgs e)
         {
-
+            var MenuComandas = new MenuComandas(_u);
+            MenuComandas.ShowDialog();
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)

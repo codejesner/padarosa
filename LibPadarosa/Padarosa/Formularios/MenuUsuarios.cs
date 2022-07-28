@@ -73,6 +73,8 @@ namespace Padarosa.Formularios
             _idSelecionado = int.Parse(linha.Cells[0].Value.ToString());
             txtNomeAtt.Text = linha.Cells[1].Value.ToString();
             txtEmailAtt.Text = linha.Cells[2].Value.ToString();
+            lblExcluir.ForeColor = Color.Red;
+            lblExcluir.Text = $"{linha.Cells[0].Value} - {linha.Cells[1].Value} - {linha.Cells[2].Value}";
 
 
         }
@@ -97,6 +99,32 @@ namespace Padarosa.Formularios
             else
             {
                 MessageBox.Show("Verifique as informações.");
+            }
+        }
+        private void dgvUsuarios_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            var r  = MessageBox.Show("Deseja realmente apagar?", "Atenção", MessageBoxButtons.YesNo);
+            if(r == DialogResult.Yes)
+            {
+                if (Banco.UsuarioDAO.RemoverPorId(_idSelecionado))
+                {
+                    MessageBox.Show("Usuario removido com sucesso!");
+                    AtualizarDGV();
+                    lblExcluir.Text = "";
+                    txtNomeAtt.Clear();
+                    txtEmailAtt.Clear();
+                    txtSenhaAtt.Clear();
+                    grbAtualizar.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Selecione o usuario para remover");
+                }
             }
         }
     }

@@ -89,6 +89,12 @@
     <Compile Include="Formularios\MenuCategorias.Designer.cs">
       <DependentUpon>MenuCategorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\MenuComandas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\MenuComandas.Designer.cs">
+      <DependentUpon>MenuComandas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuCategorias.resx">
       <DependentUpon>MenuCategorias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\MenuComandas.resx">
+      <DependentUpon>MenuComandas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>

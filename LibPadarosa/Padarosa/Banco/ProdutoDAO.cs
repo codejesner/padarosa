@@ -105,6 +105,20 @@ namespace Padarosa.Banco
 
         }
 
+        public static DataTable BuscarNomePorID(int id)
+        {
+            DataTable tabela = new DataTable();
+            string comando;
+            comando = "SELECT nome FROM produtos WHERE id = @id";
+            ConexaoBD conexaoBD = new ConexaoBD();
+            MySqlConnection con = conexaoBD.ObterConexao();
+            MySqlCommand cmd = new MySqlCommand(comando, con);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Prepare();
+            tabela.Load(cmd.ExecuteReader());
+            conexaoBD.Desconectar(con);
+            return tabela;
+        }
     }
 
 }
